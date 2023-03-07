@@ -12,8 +12,7 @@ const authenticationService = {
   },
   checkAuth: function (params = {}) {
     return getLocalStorage(params);
-  },
- 
+  }
 }
 
 export default authenticationService;

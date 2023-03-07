@@ -1,8 +1,10 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from "react-router-dom";
+// components
 import ButtonMore from 'components/ButtonMore';
 import GameCard from 'components/GameCard';
 
+// data and constants
 import { all } from 'data/games';
 import paths from 'data/paths';
 
@@ -29,7 +31,7 @@ export default function Library() {
   return (
     <div className='container flex mx-auto flex-col items-center px-4 sm:px-0'>
       <div className='flex items-center justify-between w-full mb-6'>
-        <Link to={paths.HOME_PAGE} className='text-rose-500 hover:text-stone-50 transition self-start focus:outline-none focus:text-rose-700'>Back to Home page</Link>
+        <Link to={paths.HOME_PAGE} className='text-rose-500 hover:text-stone-50 transition self-start focus:outline-none focus:text-rose-700'>Back to Home</Link>
         <input className='bg-stone-50 py-1 px-3 sm:py-2 sm:w-96 focus:outline-none' type="text" value={query} onChange={e => setQuery(e.target.value)} />
       </div>
       {displayed.length ? (

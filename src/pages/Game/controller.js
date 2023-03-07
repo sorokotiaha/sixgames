@@ -1,26 +1,26 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { redirect, useParams } from "react-router-dom";
+import React, { useContext } from 'react'
+import { useParams, Navigate } from "react-router-dom";
 import { AuthenticationContext } from 'context/AuthenticationProvider';
+// component
 import Game from './Game';
+// constants
 import paths from 'data/paths';
 import { all } from 'data/games';
 
 export default function GameContainer() {
-  const { loggedIn } = useContext(AuthenticationContext);
+  const { loggedIn, user } = useContext(AuthenticationContext);
   let { gameId } = useParams();
-  const [game, setGame] = useState(null);
+  const game = all.find(({id}) => id === parseInt(gameId));
 
-  useEffect(() => {
-    setGame(all.find(({id}) => id === +gameId));
-  }, [gameId])
-
-  if(!loggedIn) {
-    redirect(paths.HOME_PAGE)
+  if(!loggedIn || !user) {
+    return <Navigate to={paths.HOME_PAGE} />
   }
 
-  if(!game) return;
+  const setBet = val => {
+    console.log(val);
+  }
 
   return (
-    <Game data={game} />
+    <Game data={game} user={user} setBet={setBet} />
   )
 }

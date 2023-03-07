@@ -6,6 +6,7 @@ import Home from 'pages/Home';
 import Game from 'pages/Game/controller';
 import Library from 'pages/Library';
 
+// paths constatns
 import paths from 'data/paths';
 
 const Router = ({ match }) => {

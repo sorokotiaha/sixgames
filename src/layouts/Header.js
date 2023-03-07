@@ -1,18 +1,17 @@
 import React, { Fragment, useContext } from 'react';
 import { AuthenticationContext } from 'context/AuthenticationProvider';
+// components
 import ButtonPrimary from 'components/ButtonPrimary';
 import ButtonSecondary from 'components/ButtonSecondary';
-
+// constnts
+import { CURRENCY } from 'data/currency';
+// assets
 import logo from 'assets/icons/logo.svg'
 
 export default function Header() {
-  const {user, loggedIn} = useContext(AuthenticationContext);
+  const {user, loggedIn, logOut, logIn, signUp} = useContext(AuthenticationContext);
   const open = () => {
-    console.log('open popup');
-  }
-
-  const logout = () => {
-
+    // ToDo: open auth popup
   }
 
   console.log(loggedIn);
@@ -24,17 +23,17 @@ export default function Header() {
         <img className='h-8 mr-2' src={logo} alt="Logo" />
         <span className='text-rose-500 font-bold text-xl'>SiX</span>
       </div>
-      <div className='space-x-2'>
+      <div className='flex space-x-2 items-center'>
         {loggedIn && user ? (
           <Fragment>
-            <div>{user.balance}</div>
-            <div>{user.username}</div>
-            <ButtonSecondary title="Log out" onClick={logout}/>
+            <div className='text-green-400 font-semibold'>{`${CURRENCY}${user.balance}`}</div>
+            <div className='text-stone-50 font-semibold'>{`Hi, ${user.username}`}</div>
+            <ButtonPrimary title="Log out" onClick={logOut}/>
           </Fragment>
         ): (
           <Fragment>
-            <ButtonPrimary title="Log In" onClick={open} />
-            <ButtonSecondary title="Register" onClick={open} />
+            <ButtonPrimary title="Log In" onClick={logIn} />
+            <ButtonSecondary title="Register" onClick={signUp} />
           </Fragment>
         )}
       </div>

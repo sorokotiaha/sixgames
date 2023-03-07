@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { AuthenticationContext } from 'context/AuthenticationProvider';
+// components
 import PageTitle from 'components/PageTitle';
 import PageSubTitle from 'components/PageSubTitle';
 import GameCard from 'components/GameCard';
 
+// data and constanta
 import paths from 'data/paths';
 import { favourite, all } from 'data/games';
 

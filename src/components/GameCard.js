@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+// constants
 import paths from 'data/paths';
 
 export default function GameCard({ id, title, image, tag}) {
